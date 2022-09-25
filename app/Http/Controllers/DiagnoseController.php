@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Patient;
+use App\Models\Diagnose;
 use Illuminate\Http\Request;
 
-class PatientController extends Controller
+class DiagnoseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return Patient::all();
+        return Diagnose::all();
     }
 
     /**
@@ -24,7 +24,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -35,43 +35,40 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $patient = new Patient;
-        $patient->name =$request->name;
-        $patient->last_name =$request->last_name;
-        $patient->address =$request->address;
-        $patient->phone =$request->phone;
-        $patient->email =$request->email;
-        $patient->date_of_birth =$request->date_of_birth;
-        $patient->gender =$request->gender;
-        $patient->isVIP =$request->isVIP;
-        $patient->save();
-        return $patient;
+        $diagnose = new Diagnose;
+        $diagnose->reservation_id =$request->reservation_id;
+        $diagnose->diagnose =$request->diagnose;
+        $diagnose->medications =$request->medications;
+        $diagnose->date =$request->date;
+        $diagnose->note =$request->note;
+        $diagnose->save();
+        return $diagnose;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Diagnose  $diagnose
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Diagnose $diagnose)
     {
-        $patient = Patient::find($id);
-        if(!$patient)
+        $diagnose = Diagnose::find($id);
+        if(!$diagnose)
         {
-            return ["result"=>"No patient found"];
+            return ["result"=>"No diagnose found"];
         }
         else
-        return $patient;
+        return $diagnose;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Diagnose  $diagnose
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patient $patient)
+    public function edit(Diagnose $diagnose)
     {
         //
     }
@@ -80,10 +77,10 @@ class PatientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Diagnose  $diagnose
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Diagnose $diagnose)
     {
         //
     }
@@ -91,10 +88,10 @@ class PatientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Diagnose  $diagnose
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy(Diagnose $diagnose)
     {
         //
     }

@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use app\Http\Controllers\RoleController;
 use app\Http\Controllers\PatientController;
+use app\Http\Controllers\ReservationController;
+use app\Http\Controllers\ServiceController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -20,5 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     
 });
 
+Route::resource('user','UserController');
 Route::resource('role','RoleController');
 Route::resource('patient','PatientController');
+Route::resource('service','ServiceController');
+Route::resource('reservation','ReservationController');

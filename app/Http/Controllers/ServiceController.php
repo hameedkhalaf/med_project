@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Patient;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
-class PatientController extends Controller
+class ServiceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return Patient::all();
+        //
     }
 
     /**
@@ -24,7 +24,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -35,43 +35,27 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $patient = new Patient;
-        $patient->name =$request->name;
-        $patient->last_name =$request->last_name;
-        $patient->address =$request->address;
-        $patient->phone =$request->phone;
-        $patient->email =$request->email;
-        $patient->date_of_birth =$request->date_of_birth;
-        $patient->gender =$request->gender;
-        $patient->isVIP =$request->isVIP;
-        $patient->save();
-        return $patient;
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Service $service)
     {
-        $patient = Patient::find($id);
-        if(!$patient)
-        {
-            return ["result"=>"No patient found"];
-        }
-        else
-        return $patient;
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patient $patient)
+    public function edit(Service $service)
     {
         //
     }
@@ -80,10 +64,10 @@ class PatientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Service $service)
     {
         //
     }
@@ -91,10 +75,10 @@ class PatientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Service  $service
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy(Service $service)
     {
         //
     }

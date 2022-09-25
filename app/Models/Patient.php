@@ -21,6 +21,7 @@ class Patient extends Model
         'last_name',
         'address',
         'phone',
+        'email',
         'date_of_birth',
         'gender',
         'isVIP',

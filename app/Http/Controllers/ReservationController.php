@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Patient;
+use App\Models\Reservation;
 use Illuminate\Http\Request;
 
-class PatientController extends Controller
+class ReservationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class PatientController extends Controller
      */
     public function index()
     {
-        return Patient::all();
+        return Reservation::all();
     }
 
     /**
@@ -24,7 +24,7 @@ class PatientController extends Controller
      */
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -35,43 +35,39 @@ class PatientController extends Controller
      */
     public function store(Request $request)
     {
-        $patient = new Patient;
-        $patient->name =$request->name;
-        $patient->last_name =$request->last_name;
-        $patient->address =$request->address;
-        $patient->phone =$request->phone;
-        $patient->email =$request->email;
-        $patient->date_of_birth =$request->date_of_birth;
-        $patient->gender =$request->gender;
-        $patient->isVIP =$request->isVIP;
-        $patient->save();
-        return $patient;
+        $reservation = new Reservation;
+        $reservation->user_id =$request->user_id;
+        $reservation->patient_id =$request->patient_id;
+        $reservation->service_id =$request->service_id;
+        $reservation->date =$request->date;
+        $reservation->save();
+        return $reservation;
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Reservation $reservation)
     {
-        $patient = Patient::find($id);
-        if(!$patient)
+        $reservation = Reservation::find($id);
+        if(!$reservation)
         {
-            return ["result"=>"No patient found"];
+            return ["result"=>"No reservation found"];
         }
         else
-        return $patient;
+        return $reservation;
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Patient $patient)
+    public function edit(Reservation $reservation)
     {
         //
     }
@@ -80,10 +76,10 @@ class PatientController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Patient $patient)
+    public function update(Request $request, Reservation $reservation)
     {
         //
     }
@@ -91,10 +87,10 @@ class PatientController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Patient  $patient
+     * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Patient $patient)
+    public function destroy(Reservation $reservation)
     {
         //
     }
